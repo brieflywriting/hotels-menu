@@ -1,4 +1,4 @@
-# flutter_application_1
+# hotels-menu
 
 This is a test task for Pavel Skasyrskii.
 
