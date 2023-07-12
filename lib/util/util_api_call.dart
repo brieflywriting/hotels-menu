@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_application_1/models/models_hotel.dart';
 import 'package:http/http.dart' as http;
@@ -11,14 +12,14 @@ class HotelsData {
   //list of all hotels
   static final List<HotelModel> _hotelModelList = [];
   //predefined server URL. In production, API keys should be generated and provided from the server from a diffent class.
-  static const String apiHotelUrl =
+  static const String _apiHotelUrl =
       "https://k106555.hostde21.fornex.host/v1/test_api.php?key=getHotels&apiKey=RoCyGPs9ocF92neCHnGcAOMvpnLo2ol6";
-
-  //a method to make a GET request to the server specified in [apiHotelUrl]
+  static const String _apiKey="RoCyGPs9ocF92neCHnGcAOMvpnLo2ol6";
+  //a method to make a GET request to the server specified in [apiHotelUrl]. I would have used headers, but I didn't get them to work: I need to know specifications of the server.
   static Future getHotelsFuture() async {
-    return http.get(Uri.parse(apiHotelUrl)).then((response) {
-      //if status code of the response is equal to 200, then proceed with retrieval of data
-      if ((response.statusCode ~/ 100) == 2) {
+    return http.get(Uri.parse(_apiHotelUrl)).then((response) {
+      //if status code of the response is equal to 200 and that internal status of data is "true", then proceed with retrieval of data
+      if ((response.statusCode ~/ 100) == 2&&jsonDecode(response.body )["status"]as bool) {
 
         //the data recieved needs to be decoded from json format
         List<dynamic> jsonHotels = jsonDecode(response.body)["data"]["result"];
@@ -48,6 +49,7 @@ class HotelsData {
               hotel["url"]));
         }
       }
+      else throw Exception(); //this is a placeholder exception
     });
   }
 

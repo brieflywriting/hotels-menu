@@ -3,7 +3,7 @@
 class AmenityAssigner {
 
 
-  //several available amenities. I didn't cover all of them because I wanted to showcase the principle the filter is build upon.
+  //several available amenities. I didn't cover all of them because I wanted to showcase the principle the filter is build upon. This class was creating for filtering which I decided to not implement.
  static const List<Amenity> allAmenities=[
     Amenity("131", "Wi-Fi in public areas","General"),
     Amenity("50", "24h.Reception", "General"),
