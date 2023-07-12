@@ -47,7 +47,7 @@ class _HotelScreenState extends State<HotelScreen> {
               return Image.network(imagesUrls[pagePosition], errorBuilder:
                       (BuildContext context, Object exception,
                           StackTrace? stackTrace) {
-                return Center(child: FittedBox(fit: BoxFit.scaleDown,child: Text('Scraping of images impossible: CORS policy enabled. This is a created placeholder. If you see this text, you are launching a profile or a release build.')));
+                return const Center(child: FittedBox(fit: BoxFit.scaleDown,child: Text('Scraping of images impossible: CORS policy enabled. This is a created placeholder. If you see this text, you are launching a profile or a release build.')));
               },
                   fit: BoxFit
                       .scaleDown); //this is where it shows the carousel of hotel room pictures. no specification on what rooms are being shown implemented.
